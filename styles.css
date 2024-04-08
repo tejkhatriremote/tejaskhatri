@@ -232,3 +232,26 @@ footer {
 .social-media li {
   margin-right: 1rem;
 }
+/* Fade In Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Out Animation */
+.fade-out {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-out:not(.visible) {
+  opacity: 0;
+  transform: translateY(-20px);
+}

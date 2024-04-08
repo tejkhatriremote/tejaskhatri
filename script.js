@@ -8,8 +8,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Fade In Animation
+// Fade In and Fade Out Animations
 const fadeInElements = document.querySelectorAll('.fade-in');
+const fadeOutElements = document.querySelectorAll('.fade-out');
 
 function isVisible(element) {
   const rect = element.getBoundingClientRect();
@@ -29,18 +30,20 @@ function handleFadeIn() {
   });
 }
 
-window.addEventListener('scroll', handleFadeIn);
-window.addEventListener('resize', handleFadeIn);
-
-// Flip Card Animation
-const flipCards = document.querySelectorAll('.flip-card');
-
-flipCards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.classList.add('flip');
+function handleFadeOut() {
+  fadeOutElements.forEach(element => {
+    if (!isVisible(element)) {
+      element.classList.remove('visible');
+    }
   });
+}
 
-  card.addEventListener('mouseleave', () => {
-    card.classList.remove('flip');
-  });
+window.addEventListener('scroll', () => {
+  handleFadeIn();
+  handleFadeOut();
+});
+
+window.addEventListener('resize', () => {
+  handleFadeIn();
+  handleFadeOut();
 });
